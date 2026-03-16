@@ -1,0 +1,252 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+datasource db {
+  provider = "postgresql"
+}
+
+// ----------------------------------------------------------------------------
+// 1. Users & Auth Module
+// ----------------------------------------------------------------------------
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  passwordHash  String
+  firstName     String
+  lastName      String
+  role          Role      @default(CUSTOMER)
+  twoFactorEnabled Boolean @default(false)
+  twoFactorSecret  String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  profile       Profile?
+  wallets       Wallet[]
+  loans         LoanApplication[]
+  notifications Notification[]
+  auditLogs     AuditLog[]
+}
+
+model Profile {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  phoneNumber String?
+  address     String?
+  city        String?
+  country     String?
+  kycStatus   KYCStatus @default(PENDING)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum Role {
+  CUSTOMER
+  STAFF
+  ADMIN
+}
+
+enum KYCStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  action    String
+  details   String?
+  ipAddress String?
+  createdAt DateTime @default(now())
+}
+
+// ----------------------------------------------------------------------------
+// 2. Wallets & Transactions Module
+// ----------------------------------------------------------------------------
+
+model Wallet {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  currency  String   @default("USD")
+  balance   Decimal  @default(0.00) // Stored as exact decimal
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  transactions Transaction[]
+  ledgerEntries LedgerEntry[]
+}
+
+model Transaction {
+  id            String   @id @default(uuid())
+  walletId      String
+  wallet        Wallet   @relation(fields: [walletId], references: [id])
+  type          TxType
+  amount        Decimal
+  currency      String   @default("USD")
+  status        TxStatus @default(PENDING)
+  reference     String   @unique // e.g. external payment ref or internal string
+  description   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  ledgerEntries LedgerEntry[]
+}
+
+enum TxType {
+  DEPOSIT
+  WITHDRAWAL
+  TRANSFER_IN
+  TRANSFER_OUT
+  PAYMENT
+  LOAN_DISBURSEMENT
+  LOAN_REPAYMENT
+}
+
+enum TxStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REVERSED
+}
+
+// ----------------------------------------------------------------------------
+// 3. Ledger Module (Double Entry)
+// ----------------------------------------------------------------------------
+
+model LedgerEntry {
+  id            String      @id @default(uuid())
+  transactionId String
+  transaction   Transaction @relation(fields: [transactionId], references: [id])
+  walletId      String?     // Can be null for system accounts
+  wallet        Wallet?     @relation(fields: [walletId], references: [id])
+  accountId     String      // "ASSETS", "LIABILITIES", "USER_WALLET", "REVENUE"
+  entryType     EntryType
+  amount        Decimal
+  currency      String      @default("USD")
+  description   String?
+  createdAt     DateTime    @default(now())
+}
+
+enum EntryType {
+  CREDIT
+  DEBIT
+}
+
+// ----------------------------------------------------------------------------
+// 4. Payments Module (Stripe)
+// ----------------------------------------------------------------------------
+
+model PaymentMethod {
+  id            String   @id @default(uuid())
+  userId        String
+  stripePaymentMethodId String @unique
+  cardLast4     String
+  cardBrand     String
+  isDefault     Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model StripeCharge {
+  id              String   @id @default(uuid())
+  transactionId   String   @unique // Links to internal Transaction
+  stripeChargeId  String   @unique
+  amount          Decimal
+  currency        String
+  status          String
+  createdAt       DateTime @default(now())
+}
+
+// ----------------------------------------------------------------------------
+// 5. Loans Module
+// ----------------------------------------------------------------------------
+
+model LoanProduct {
+  id              String   @id @default(uuid())
+  name            String
+  description     String?
+  interestRate    Decimal  // Annual percentage
+  maxTermMonths   Int
+  minAmount       Decimal
+  maxAmount       Decimal
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  applications    LoanApplication[]
+}
+
+model LoanApplication {
+  id              String       @id @default(uuid())
+  userId          String
+  user            User         @relation(fields: [userId], references: [id])
+  productId       String
+  product         LoanProduct  @relation(fields: [productId], references: [id])
+  requestedAmount Decimal
+  approvedAmount  Decimal?
+  termMonths      Int
+  status          LoanStatus   @default(PENDING)
+  appliedAt       DateTime     @default(now())
+  approvedAt      DateTime?
+  repayments      LoanRepayment[]
+}
+
+enum LoanStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  ACTIVE
+  CLOSED
+  DEFAULTED
+}
+
+model LoanRepayment {
+  id                String          @id @default(uuid())
+  loanApplicationId String
+  loanApplication   LoanApplication @relation(fields: [loanApplicationId], references: [id])
+  amount            Decimal
+  principalAmount   Decimal
+  interestAmount    Decimal
+  status            TxStatus        @default(PENDING)
+  scheduledDate     DateTime
+  paidDate          DateTime?
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+}
+
+// ----------------------------------------------------------------------------
+// 6. Notifications Module
+// ----------------------------------------------------------------------------
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  type      NotifType
+  title     String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+enum NotifType {
+  TRANSACTION
+  SECURITY
+  LOAN_UPDATE
+  SYSTEM
+}
+
+model NotificationPreference {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  email     Boolean  @default(true)
+  sms       Boolean  @default(false)
+  push      Boolean  @default(true)
+  updatedAt DateTime @updatedAt
+}
