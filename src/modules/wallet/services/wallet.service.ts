@@ -82,23 +82,76 @@ export async function processTransfer(senderId: string, data: WalletTransferForm
   })
 }
 
-export async function getWalletBalance(userId: string) {
-  const wallet = await prisma.wallet.findFirst({
-    where: { userId, isActive: true },
-  })
-  return wallet ? Number(wallet.balance) : 0
-}
-
-export async function getTransactionHistory(userId: string) {
+export async function getFullWalletData(userId: string) {
   const wallet = await prisma.wallet.findFirst({
     where: { userId },
+    include: {
+      transactions: {
+        orderBy: { createdAt: 'desc' },
+        take: 50,
+      }
+    }
   })
+  return wallet
+}
 
-  if (!wallet) return []
-
-  return await prisma.transaction.findMany({
-    where: { walletId: wallet.id },
-    orderBy: { createdAt: 'desc' },
-    take: 20,
+export async function getAllWallets() {
+  return await prisma.wallet.findMany({
+    include: {
+      user: true,
+    },
+    orderBy: { updatedAt: 'desc' },
   })
 }
+
+export async function adjustWalletBalance(walletId: string, amount: number, type: 'CREDIT' | 'DEBIT', description: string) {
+  return await prisma.$transaction(async (tx) => {
+    const wallet = await tx.wallet.findUnique({ where: { id: walletId } })
+    if (!wallet) throw new Error('Wallet not found')
+
+    const updatedWallet = await tx.wallet.update({
+      where: { id: walletId },
+      data: {
+        balance: type === 'CREDIT' ? { increment: amount } : { decrement: amount },
+      }
+    })
+
+    const transaction = await tx.transaction.create({
+      data: {
+        walletId,
+        type: type === 'CREDIT' ? 'DEPOSIT' : 'WITHDRAWAL',
+        amount: amount,
+        currency: wallet.currency,
+        status: 'COMPLETED',
+        reference: `ADJ-${Date.now()}-${walletId}`,
+        description: `ADMIN ADJUSTMENT: ${description}`,
+      }
+    })
+
+    await tx.ledgerEntry.create({
+      data: {
+        transactionId: transaction.id,
+        walletId,
+        accountId: 'USER_WALLET',
+        entryType: type,
+        amount,
+        currency: wallet.currency,
+        description: `Admin manual adjustment: ${description}`,
+      }
+    })
+
+    return updatedWallet
+  })
+}
+
+export async function getPlatformLedger() {
+  return await prisma.ledgerEntry.findMany({
+    include: {
+      transaction: true,
+      wallet: { include: { user: true } },
+    },
+    orderBy: { createdAt: 'desc' },
+    take: 100,
+  })
+}
+
