@@ -54,6 +54,55 @@ export async function getUserLoans(userId: string) {
   })
 }
 
+export async function getAllLoanProducts(onlyActive = false) {
+  return await prisma.loanProduct.findMany({
+    where: onlyActive ? { isActive: true } : {},
+    orderBy: { createdAt: 'desc' },
+  })
+}
+
+export async function getLoanProductById(id: string) {
+  return await prisma.loanProduct.findUnique({
+    where: { id },
+  })
+}
+
+export async function updateLoanProduct(id: string, data: Partial<{
+  name: string
+  description: string
+  interestRate: number
+  maxTermMonths: number
+  minAmount: number
+  maxAmount: number
+  isActive: boolean
+}>) {
+  const updateData: any = { ...data }
+  if (data.interestRate !== undefined) updateData.interestRate = new Decimal(data.interestRate)
+  if (data.minAmount !== undefined) updateData.minAmount = new Decimal(data.minAmount)
+  if (data.maxAmount !== undefined) updateData.maxAmount = new Decimal(data.maxAmount)
+
+  return await prisma.loanProduct.update({
+    where: { id },
+    data: updateData,
+  })
+}
+
+export async function deleteLoanProduct(id: string) {
+  return await prisma.loanProduct.delete({
+    where: { id },
+  })
+}
+
+export async function getAllLoanApplications() {
+  return await prisma.loanApplication.findMany({
+    include: {
+      user: true,
+      product: true,
+    },
+    orderBy: { appliedAt: 'desc' },
+  })
+}
+
 export async function approveLoan(applicationId: string, approvedAmount: number) {
   return await prisma.$transaction(async (tx) => {
     const application = await tx.loanApplication.update({
@@ -61,17 +110,15 @@ export async function approveLoan(applicationId: string, approvedAmount: number)
       data: {
         status: 'APPROVED',
         approvedAmount: new Decimal(approvedAmount),
-        approvedAt: new Error().stack ? new Date() : new Date(), // Just ensuring valid date
+        approvedAt: new Date(),
       },
       include: { user: true },
     })
 
-    // Create initial repayment schedule (simplified: 1 month from now)
-    // In a real app, this would be a loop for each month of the term
     await tx.loanRepayment.create({
       data: {
         loanApplicationId: applicationId,
-        amount: new Decimal(approvedAmount), // placeholder
+        amount: new Decimal(approvedAmount),
         principalAmount: new Decimal(approvedAmount),
         interestAmount: new Decimal(0),
         status: 'PENDING',
@@ -82,3 +129,11 @@ export async function approveLoan(applicationId: string, approvedAmount: number)
     return application
   })
 }
+
+export async function rejectLoan(applicationId: string) {
+  return await prisma.loanApplication.update({
+    where: { id: applicationId },
+    data: { status: 'REJECTED' },
+  })
+}
+

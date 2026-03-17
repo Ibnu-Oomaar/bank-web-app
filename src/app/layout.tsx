@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google"; // [!code ++]
+import { Geist, Geist_Mono } from "next/font/google";
 import Providers from "./providers";
-import "@/styles/globals.css";
+// Fix the path here:
+import "@/styles/globals.css"; 
 
-// Configure the fonts [!code ++]
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -26,7 +26,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* Apply the font variables to the body */}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}>
         <Providers>
           {children}
