@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server'
 import { stripe } from '@/lib/stripe'
 import { handleStripeWebhook } from '@/modules/payments/services/stripe.service'
+import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(request: NextRequest) {
   const payload = await request.text()

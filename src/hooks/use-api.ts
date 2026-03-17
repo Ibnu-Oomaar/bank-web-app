@@ -88,3 +88,28 @@ export const useAdminStats = () => {
     queryFn: () => apiFetch<any>('/api/admin/stats'),
   })
 }
+
+export function useAdminUsers() {
+  return useQuery({
+    queryKey: ['admin-users'],
+    queryFn: async () => {
+      return await apiFetch<any[]>('/api/admin/users')
+    },
+  })
+}
+
+export function useUpdateUserMutation() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: async ({ id, data }: { id: string, data: any }) => {
+      return await apiFetch(`/api/admin/users/${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify(data),
+      })
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin-users'] })
+    },
+  })
+}
+

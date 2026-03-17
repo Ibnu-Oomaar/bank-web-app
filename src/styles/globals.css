@@ -1,36 +1,68 @@
 @import "tailwindcss";
 
 :root {
-  --background: 222 47% 4%;
-  --foreground: 213 31% 91%;
-  --card: 222 47% 7%;
-  --card-foreground: 213 31% 91%;
-  --popover: 222 47% 4%;
-  --popover-foreground: 213 31% 91%;
-  --primary: 217 91% 60%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 222 47% 12%;
-  --secondary-foreground: 210 40% 98%;
-  --muted: 222 47% 12%;
-  --muted-foreground: 215 20.2% 65.1%;
-  --accent: 217 91% 60%;
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 63% 31%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 222 47% 12%;
-  --input: 222 47% 12%;
-  --ring: 213 27% 84%;
-  --radius: 0.75rem;
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 240 5.9% 10%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 240 4.9% 83.9%;
 }
 
 @theme inline {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
   --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
   --color-card: hsl(var(--card));
-  --color-accent: hsl(var(--accent));
+  --color-card-foreground: hsl(var(--card-foreground));
   --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
   --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
 }
 
 @layer base {
@@ -40,18 +72,20 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    @apply antialiased selection:bg-primary/30;
+    @apply antialiased selection:bg-primary/20;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
 .glass {
-  @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+  @apply backdrop-blur-md bg-background/60 border border-border/50 shadow-sm;
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-linear-to-r from-blue-400 to-cyan-400 font-bold;
+  @apply bg-clip-text text-transparent bg-linear-to-br from-foreground to-foreground/70 font-bold;
 }
 
-.glow-btn {
-  @apply relative overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-95;
+.system-card {
+  @apply bg-card text-card-foreground border border-border shadow-xs transition-all hover:shadow-md hover:border-border/80;
 }
+
