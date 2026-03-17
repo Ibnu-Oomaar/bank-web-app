@@ -1,0 +1,479 @@
+$ next build
+▲ Next.js 16.1.6 (Turbopack)
+- Environments: .env
+
+  Creating an optimized production build ...
+Turbopack build encountered 1 warnings:
+./src/app/api/payments/webhook/route.ts:30:14
+Next.js can't recognize the exported `config` field in route. Page config in `config` is deprecated and ignored, use individual exports instead.
+[0m [90m 28 |[39m }
+ [90m 29 |[39m
+[31m[1m>[22m[39m[90m 30 |[39m [36mexport[39m [36mconst[39m config [33m=[39m {
+ [90m    |[39m              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 31 |[39m   api[33m:[39m {
+ [90m 32 |[39m     bodyParser[33m:[39m [36mfalse[39m[33m,[39m [90m// Required for Stripe signature verification[39m
+ [90m 33 |[39m   }[33m,[39m[0m
+
+The exported configuration object in a source file needs to have a very specific format from which some properties can be statically parsed at compiled-time.
+
+https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
+
+
+
+> Build error occurred
+Error: Turbopack build failed with 16 errors:
+./src/app/dashboard/admin/page.tsx:5:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m  3 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m
+ [90m  4 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mButton[39m } [36mfrom[39m [32m'@/design-system/components'[39m
+[31m[1m>[22m[39m[90m  5 |[39m [36mimport[39m { 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m  6 |[39m   [33mUsers[39m[33m,[39m 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m  7 |[39m   [33mActivity[39m[33m,[39m 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m  8 |[39m   [33mShieldAlert[39m[33m,[39m 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m  9 |[39m   [33mBarChart3[39m[33m,[39m 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 10 |[39m   [33mArrowUpRight[39m[33m,[39m 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 11 |[39m   [33mAlertCircle[39m[33m,[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 12 |[39m   [33mMoreHorizontal[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 13 |[39m } [36mfrom[39m [32m'lucide-react'[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 14 |[39m
+ [90m 15 |[39m [36mconst[39m adminStats [33m=[39m [
+ [90m 16 |[39m   { label[33m:[39m [32m'Total Users'[39m[33m,[39m value[33m:[39m [32m'1,284'[39m[33m,[39m change[33m:[39m [32m'+48'[39m[33m,[39m icon[33m:[39m [33mUsers[39m }[33m,[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/admin/page.tsx [Client Component Browser]
+    ./src/app/dashboard/admin/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/admin/page.tsx [Client Component SSR]
+    ./src/app/dashboard/admin/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/dashboard/admin/page.tsx:6:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m 4 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m 5 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mButton[39m } [36mfrom[39m [32m'@/design-system/components'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m { [33mUsers[39m[33m,[39m [33mActivity[39m[33m,[39m [33mShieldAlert[39m[33m,[39m [33mBarChart3[39m[33m,[39m [33mArrowUpRight[39m[33m,[39m [33mAlertCircle[39m[33m,[39m [33mMoreHorizontal[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 7 |[39m [36mconst[39m adminStats [33m=[39m [{
+ [90m 8 |[39m   label[33m:[39m [32m'Total Users'[39m[33m,[39m
+ [90m 9 |[39m   value[33m:[39m [32m'1,284'[39m[33m,[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/admin/page.tsx [Client Component Browser]
+    ./src/app/dashboard/admin/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/admin/page.tsx [Client Component SSR]
+    ./src/app/dashboard/admin/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/dashboard/loans/page.tsx:5:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m 3 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m
+ [90m 4 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mButton[39m[33m,[39m [33mInput[39m } [36mfrom[39m [32m'@/design-system/components'[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mLandmark[39m[33m,[39m [33mBriefcase[39m[33m,[39m [33mHome[39m[33m,[39m [33mCar[39m[33m,[39m [33mHandshake[39m[33m,[39m [33mChevronRight[39m[33m,[39m [33mCalculator[39m } [36mfrom[39m [32m'lucide-react'[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m
+ [90m 7 |[39m [36mconst[39m loanProducts [33m=[39m [
+ [90m 8 |[39m   { name[33m:[39m [32m'Personal Loan'[39m[33m,[39m rate[33m:[39m [32m'5.5%'[39m[33m,[39m amount[33m:[39m [32m'$1k - $50k'[39m[33m,[39m icon[33m:[39m [33mHandshake[39m[33m,[39m color[33m:[39m [32m'blue'[39m }[33m,[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/loans/page.tsx [Client Component Browser]
+    ./src/app/dashboard/loans/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/loans/page.tsx [Client Component SSR]
+    ./src/app/dashboard/loans/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/dashboard/loans/page.tsx:6:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m 4 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m 5 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mButton[39m[33m,[39m [33mInput[39m } [36mfrom[39m [32m'@/design-system/components'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m { [33mLandmark[39m[33m,[39m [33mBriefcase[39m[33m,[39m [33mHome[39m[33m,[39m [33mCar[39m[33m,[39m [33mHandshake[39m[33m,[39m [33mChevronRight[39m[33m,[39m [33mCalculator[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 7 |[39m [36mconst[39m loanProducts [33m=[39m [{
+ [90m 8 |[39m   name[33m:[39m [32m'Personal Loan'[39m[33m,[39m
+ [90m 9 |[39m   rate[33m:[39m [32m'5.5%'[39m[33m,[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/loans/page.tsx [Client Component Browser]
+    ./src/app/dashboard/loans/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/loans/page.tsx [Client Component SSR]
+    ./src/app/dashboard/loans/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/dashboard/page.tsx:5:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m  3 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m
+ [90m  4 |[39m [36mimport[39m { [33mCard[39m } [36mfrom[39m [32m'@/design-system/components'[39m
+[31m[1m>[22m[39m[90m  5 |[39m [36mimport[39m { 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m  6 |[39m   [33mTrendingUp[39m[33m,[39m 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m  7 |[39m   [33mTrendingDown[39m[33m,[39m 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m  8 |[39m   [33mArrowUpRight[39m[33m,[39m 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m  9 |[39m   [33mArrowDownLeft[39m[33m,[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 10 |[39m   [33mDollarSign[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 11 |[39m } [36mfrom[39m [32m'lucide-react'[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 12 |[39m
+ [90m 13 |[39m [36mconst[39m stats [33m=[39m [
+ [90m 14 |[39m   { label[33m:[39m [32m'Total Balance'[39m[33m,[39m value[33m:[39m [32m'$45,231.89'[39m[33m,[39m change[33m:[39m [32m'+12.5%'[39m[33m,[39m icon[33m:[39m [33mDollarSign[39m[33m,[39m trend[33m:[39m [32m'up'[39m }[33m,[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/dashboard/page.tsx:6:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m 4 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m 5 |[39m [36mimport[39m { [33mCard[39m } [36mfrom[39m [32m'@/design-system/components'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m { [33mTrendingUp[39m[33m,[39m [33mTrendingDown[39m[33m,[39m [33mArrowUpRight[39m[33m,[39m [33mArrowDownLeft[39m[33m,[39m [33mDollarSign[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 7 |[39m [36mconst[39m stats [33m=[39m [{
+ [90m 8 |[39m   label[33m:[39m [32m'Total Balance'[39m[33m,[39m
+ [90m 9 |[39m   value[33m:[39m [32m'$45,231.89'[39m[33m,[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/dashboard/payments/page.tsx:5:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m 3 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m
+ [90m 4 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mButton[39m[33m,[39m [33mInput[39m } [36mfrom[39m [32m'@/design-system/components'[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mCreditCard[39m[33m,[39m [33mRocket[39m[33m,[39m [33mShieldCheck[39m[33m,[39m [33mGlobe[39m[33m,[39m [33mZap[39m[33m,[39m [33mArrowRight[39m[33m,[39m [33mApple[39m[33m,[39m [33mPlay[39m } [36mfrom[39m [32m'lucide-react'[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m
+ [90m 7 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mPaymentsPage[39m() {
+ [90m 8 |[39m   [36mreturn[39m ([0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/payments/page.tsx [Client Component Browser]
+    ./src/app/dashboard/payments/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/payments/page.tsx [Client Component SSR]
+    ./src/app/dashboard/payments/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/dashboard/payments/page.tsx:6:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m 4 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m 5 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mButton[39m[33m,[39m [33mInput[39m } [36mfrom[39m [32m'@/design-system/components'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m { [33mCreditCard[39m[33m,[39m [33mRocket[39m[33m,[39m [33mShieldCheck[39m[33m,[39m [33mGlobe[39m[33m,[39m [33mZap[39m[33m,[39m [33mArrowRight[39m[33m,[39m [33mApple[39m[33m,[39m [33mPlay[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 7 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mPaymentsPage[39m() {
+ [90m 8 |[39m   [36mconst[39m $ [33m=[39m _c([35m14[39m)[33m;[39m
+ [90m 9 |[39m   [36mlet[39m t0[33m;[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/payments/page.tsx [Client Component Browser]
+    ./src/app/dashboard/payments/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/payments/page.tsx [Client Component SSR]
+    ./src/app/dashboard/payments/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/dashboard/settings/page.tsx:5:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m 3 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m
+ [90m 4 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mButton[39m[33m,[39m [33mInput[39m } [36mfrom[39m [32m'@/design-system/components'[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mUser[39m[33m,[39m [33mShield[39m[33m,[39m [33mBell[39m[33m,[39m [33mAppWindow[39m[33m,[39m [33mSmartphone[39m[33m,[39m [33mLock[39m } [36mfrom[39m [32m'lucide-react'[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m
+ [90m 7 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mSettingsPage[39m() {
+ [90m 8 |[39m   [36mreturn[39m ([0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/settings/page.tsx [Client Component Browser]
+    ./src/app/dashboard/settings/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/settings/page.tsx [Client Component SSR]
+    ./src/app/dashboard/settings/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/dashboard/settings/page.tsx:6:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m 4 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m 5 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mButton[39m[33m,[39m [33mInput[39m } [36mfrom[39m [32m'@/design-system/components'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m { [33mUser[39m[33m,[39m [33mShield[39m[33m,[39m [33mBell[39m[33m,[39m [33mAppWindow[39m[33m,[39m [33mSmartphone[39m[33m,[39m [33mLock[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 7 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mSettingsPage[39m() {
+ [90m 8 |[39m   [36mconst[39m $ [33m=[39m _c([35m8[39m)[33m;[39m
+ [90m 9 |[39m   [36mlet[39m t0[33m;[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/settings/page.tsx [Client Component Browser]
+    ./src/app/dashboard/settings/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/settings/page.tsx [Client Component SSR]
+    ./src/app/dashboard/settings/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/dashboard/transactions/page.tsx:5:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m 3 |[39m [36mimport[39m [33mReact[39m[33m,[39m { useState } [36mfrom[39m [32m'react'[39m
+ [90m 4 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mInput[39m } [36mfrom[39m [32m'@/design-system/components'[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mSearch[39m[33m,[39m [33mFilter[39m[33m,[39m [33mDownload[39m[33m,[39m [33mArrowUpRight[39m[33m,[39m [33mArrowDownLeft[39m[33m,[39m [33mClock[39m } [36mfrom[39m [32m'lucide-react'[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m
+ [90m 7 |[39m [36mconst[39m transactions [33m=[39m [
+ [90m 8 |[39m   { id[33m:[39m [32m'TX-1002'[39m[33m,[39m name[33m:[39m [32m'Spotify Premium'[39m[33m,[39m date[33m:[39m [32m'Mar 15, 2026'[39m[33m,[39m amount[33m:[39m [33m-[39m[35m15.99[39m[33m,[39m type[33m:[39m [32m'Subscription'[39m[33m,[39m status[33m:[39m [32m'Completed'[39m }[33m,[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/transactions/page.tsx [Client Component Browser]
+    ./src/app/dashboard/transactions/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/transactions/page.tsx [Client Component SSR]
+    ./src/app/dashboard/transactions/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/dashboard/transactions/page.tsx:6:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m 4 |[39m [36mimport[39m [33mReact[39m[33m,[39m { useState } [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m 5 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mInput[39m } [36mfrom[39m [32m'@/design-system/components'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m { [33mSearch[39m[33m,[39m [33mFilter[39m[33m,[39m [33mDownload[39m[33m,[39m [33mArrowUpRight[39m[33m,[39m [33mArrowDownLeft[39m[33m,[39m [33mClock[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 7 |[39m [36mconst[39m transactions [33m=[39m [{
+ [90m 8 |[39m   id[33m:[39m [32m'TX-1002'[39m[33m,[39m
+ [90m 9 |[39m   name[33m:[39m [32m'Spotify Premium'[39m[33m,[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/transactions/page.tsx [Client Component Browser]
+    ./src/app/dashboard/transactions/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/transactions/page.tsx [Client Component SSR]
+    ./src/app/dashboard/transactions/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/dashboard/wallets/page.tsx:5:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m 3 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m
+ [90m 4 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mButton[39m } [36mfrom[39m [32m'@/design-system/components'[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mPlus[39m[33m,[39m [33mCreditCard[39m[33m,[39m [33mLandmark[39m[33m,[39m [33mWallet[39m [36mas[39m [33mWalletIcon[39m[33m,[39m [33mMoreVertical[39m } [36mfrom[39m [32m'lucide-react'[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m
+ [90m 7 |[39m [36mconst[39m wallets [33m=[39m [
+ [90m 8 |[39m   { name[33m:[39m [32m'Main Savings'[39m[33m,[39m type[33m:[39m [32m'Savings Account'[39m[33m,[39m balance[33m:[39m [32m'$24,500.00'[39m[33m,[39m currency[33m:[39m [32m'USD'[39m[33m,[39m status[33m:[39m [32m'Primary'[39m }[33m,[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/wallets/page.tsx [Client Component Browser]
+    ./src/app/dashboard/wallets/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/wallets/page.tsx [Client Component SSR]
+    ./src/app/dashboard/wallets/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/dashboard/wallets/page.tsx:6:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m 4 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m 5 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mButton[39m } [36mfrom[39m [32m'@/design-system/components'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m { [33mPlus[39m[33m,[39m [33mCreditCard[39m[33m,[39m [33mLandmark[39m[33m,[39m [33mWallet[39m [36mas[39m [33mWalletIcon[39m[33m,[39m [33mMoreVertical[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 7 |[39m [36mconst[39m wallets [33m=[39m [{
+ [90m 8 |[39m   name[33m:[39m [32m'Main Savings'[39m[33m,[39m
+ [90m 9 |[39m   type[33m:[39m [32m'Savings Account'[39m[33m,[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/wallets/page.tsx [Client Component Browser]
+    ./src/app/dashboard/wallets/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/wallets/page.tsx [Client Component SSR]
+    ./src/app/dashboard/wallets/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/design-system/layout.tsx:6:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m  4 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m
+ [90m  5 |[39m [36mimport[39m { usePathname } [36mfrom[39m [32m'next/navigation'[39m
+[31m[1m>[22m[39m[90m  6 |[39m [36mimport[39m { 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m  7 |[39m   [33mLayoutDashboard[39m[33m,[39m 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m  8 |[39m   [33mWallet[39m[33m,[39m 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m  9 |[39m   [33mArrowLeftRight[39m[33m,[39m 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 10 |[39m   [33mHandCoins[39m[33m,[39m 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 11 |[39m   [33mCreditCard[39m[33m,[39m 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 12 |[39m   [33mSettings[39m[33m,[39m 
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 13 |[39m   [33mLogOut[39m[33m,[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 14 |[39m   [33mBell[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 15 |[39m } [36mfrom[39m [32m'lucide-react'[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 16 |[39m
+ [90m 17 |[39m [36mconst[39m navItems [33m=[39m [
+ [90m 18 |[39m   { name[33m:[39m [32m'Dashboard'[39m[33m,[39m icon[33m:[39m [33mLayoutDashboard[39m[33m,[39m href[33m:[39m [32m'/dashboard'[39m }[33m,[39m[0m
+
+
+
+Import trace:
+  Server Component:
+    ./src/design-system/layout.tsx
+    ./src/app/dashboard/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/design-system/layout.tsx:7:1
+Module not found: Can't resolve 'lucide-react'
+[0m [90m  5 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[33m;[39m
+ [90m  6 |[39m [36mimport[39m { usePathname } [36mfrom[39m [32m'next/navigation'[39m[33m;[39m
+[31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { [33mLayoutDashboard[39m[33m,[39m [33mWallet[39m[33m,[39m [33mArrowLeftRight[39m[33m,[39m [33mHandCoins[39m[33m,[39m [33mCreditCard[39m[33m,[39m [33mSettings[39m[33m,[39m [33mLogOut[39m[33m,[39m [33mBell[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  8 |[39m [36mconst[39m navItems [33m=[39m [{
+ [90m  9 |[39m   name[33m:[39m [32m'Dashboard'[39m[33m,[39m
+ [90m 10 |[39m   icon[33m:[39m [33mLayoutDashboard[39m[33m,[39m[0m
+
+
+
+Import trace:
+  Server Component:
+    ./src/design-system/layout.tsx
+    ./src/app/dashboard/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./src/app/dashboard/admin/page.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/dashboard/admin/page.tsx:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/dashboard/loans/page.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/dashboard/loans/page.tsx:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/dashboard/page.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/dashboard/page.tsx:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/dashboard/payments/page.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/dashboard/payments/page.tsx:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/dashboard/settings/page.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/dashboard/settings/page.tsx:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/dashboard/transactions/page.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/dashboard/transactions/page.tsx:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/dashboard/wallets/page.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/dashboard/wallets/page.tsx:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/design-system/layout.tsx:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/design-system/layout.tsx:7:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+error: script "build" exited with code 1

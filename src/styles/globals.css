@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --background: 222 47% 4%;
+  --foreground: 213 31% 91%;
+  --card: 222 47% 7%;
+  --card-foreground: 213 31% 91%;
+  --popover: 222 47% 4%;
+  --popover-foreground: 213 31% 91%;
+  --primary: 217 91% 60%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 222 47% 12%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 222 47% 12%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217 91% 60%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 222 47% 12%;
+  --input: 222 47% 12%;
+  --ring: 213 27% 84%;
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-card: hsl(var(--card));
+  --color-accent: hsl(var(--accent));
+  --color-muted: hsl(var(--muted));
+  --color-border: hsl(var(--border));
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    @apply antialiased selection:bg-primary/30;
+  }
+}
+
+.glass {
+  @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-linear-to-r from-blue-400 to-cyan-400 font-bold;
+}
+
+.glow-btn {
+  @apply relative overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-95;
+}
